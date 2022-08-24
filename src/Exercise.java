@@ -68,7 +68,10 @@ public class Exercise {
 
 					} else
 						check = false;
-
+					
+					if (space == 0)
+						check = false;
+					
 					if (check == true) {
 						int a = Integer.parseInt(str.substring(0, space));
 						int b = Integer.parseInt(str.substring(space + 1, str.length()));
