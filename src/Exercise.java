@@ -44,8 +44,7 @@ public class Exercise {
 		boolean check;
 		int space;
 
-		try {
-			Scanner scanner = new Scanner(System.in);
+		try (Scanner scanner = new Scanner(System.in)) {
 
 			do {
 				check = true;
@@ -68,13 +67,22 @@ public class Exercise {
 
 					} else
 						check = false;
-					
+
 					if (space == 0)
 						check = false;
-					
+
 					if (check == true) {
-						int a = Integer.parseInt(str.substring(0, space));
-						int b = Integer.parseInt(str.substring(space + 1, str.length()));
+
+						int a = 0;
+						int b = 0;
+
+						try {
+							a = Integer.parseInt(str.substring(0, space));
+							b = Integer.parseInt(str.substring(space + 1, str.length()));
+
+						} catch (Exception e) {
+							check = false;
+						}
 
 						if (a > 0 && b > 0 && a <= b) {
 							Line line = new Line();
@@ -92,7 +100,7 @@ public class Exercise {
 
 				}
 			} while (!str.isBlank());
-			scanner.close();
+
 		} catch (Exception e) {
 			System.out.println("Chyba");
 			e.printStackTrace();
